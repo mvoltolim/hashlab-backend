@@ -1,0 +1,21 @@
+version: "3"
+services:
+  discount-server:
+    container_name: discount-server
+    image: hashorg/hash-mock-discount-service:latest
+    ports:
+      - "50051:50051"
+    networks:
+      - hashlab-net
+  hashlab:
+    container_name: hashlab
+    image: hashlab/viniciusneves:latest
+    environment:
+      - GRPC_DISCOUNTSERVER_ADDRESS=172.17.0.1:50051
+    ports:
+      - "8081:8080"
+    networks:
+      - hashlab-net
+networks:
+  hashlab-net:
+    driver: bridge
