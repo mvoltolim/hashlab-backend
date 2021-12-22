@@ -1,0 +1,6 @@
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+grpc:
+  discountServer:
+    address: "localhost:0"
